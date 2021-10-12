@@ -56,12 +56,16 @@ ReactDOM.render(
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
         <Router>
+          <Redirect from="/Workspace/safety.html" to="/Workspace/Safety" noThrow />
+          <Redirect from="/Workspace/quality.html" to="/Workspace/Quality" noThrow />
+          <Redirect from="/Workspace/production.html" to="/Workspace/Production" noThrow />
           <Workspace path="Workspace" />
           <Workspace path="Workspace/:categoryPage" />
+          <Workspace path="Workspace/:categoryPage/:subPage" />
         </Router>
         <Router basepath="/LaunchPad">
           <Redirect from="/*" to="/LaunchPad/SignIn" noThrow />
-          <SignIn path="/SignIn"/>
+          <SignIn path="/SignIn" />
         </Router>
       </UnauthenticatedTemplate>
     </MsalProvider>
