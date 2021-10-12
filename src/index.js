@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from './views/SignIn';
 import Home from './views/Home';
+import Workspace from './views/Workspace';
 import { Router, Redirect } from "@reach/router";
 import { createTheme } from '@mui/material/styles';
 import { PublicClientApplication } from "@azure/msal-browser";
@@ -38,6 +39,8 @@ ReactDOM.render(
     <MsalProvider instance={msalInstance}>
       <AuthenticatedTemplate>
         <Router>
+          <Workspace path="Workspace" />
+          <Workspace path="Workspace/:tab" />
           <Redirect from="/*" to="/LaunchPad/Workspace" noThrow />
           <Redirect from="/launchpad/*" to="/LaunchPad/Workspace" noThrow />
         </Router>
@@ -48,8 +51,7 @@ ReactDOM.render(
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
         <Router>
-          <Redirect from="/*" to="/LaunchPad/SignIn" noThrow />
-          <SignIn path="/Signin"/>
+          <Workspace path="Workspace" />
         </Router>
         <Router basepath="/LaunchPad">
           <Redirect from="/*" to="/LaunchPad/SignIn" noThrow />
