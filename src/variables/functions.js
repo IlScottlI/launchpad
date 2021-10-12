@@ -61,6 +61,10 @@ export async function getLinkWorkspaces(plant_id,depth) {
     return  axios.get(`${baseUrl}/api/linkworkspaces/?plant=${plant_id}&depth=${depth}`);
 }
 
+export async function getLinkWorkspacesByTag(id,depth) {
+    return  axios.get(`${baseUrl}/api/linkworkspaces/?tag=${id}&depth=${depth}`);
+}
+
 export async function getLinkWorkspace(workspace_id,depth) {
     return  axios.get(`${baseUrl}/api/linkworkspaces/${workspace_id}/?depth=${depth}`);
 }
@@ -71,6 +75,10 @@ export async function getLinks() {
 
 export async function getLinksByIds(ids) {
     return  axios.get(`${baseUrl}/api/links/?id__in=${ids}`);
+}
+
+export async function getLinksByTagId(id,depth) {
+    return  axios.get(`${baseUrl}/api/links/?tag=${id}&depth=${depth}`);
 }
 
 export async function getLinksByPlantId(plant_id) {
@@ -125,5 +133,7 @@ export async function getPodById(id) {
     return  axios.get(`${baseUrlCIS}/APIs/LaunchPad/pods.php?id=${id}/`);
 }
 
-
+export async function getTags() {
+    return  axios.get(`${baseUrl}/api/tags/`);
+}
 

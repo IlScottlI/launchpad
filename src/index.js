@@ -39,8 +39,13 @@ ReactDOM.render(
     <MsalProvider instance={msalInstance}>
       <AuthenticatedTemplate>
         <Router>
+          <Redirect from="/Workspace/safety.html" to="/Workspace/Safety" noThrow />
+          <Redirect from="/Workspace/quality.html" to="/Workspace/Quality" noThrow />
+          <Redirect from="/Workspace/production.html" to="/Workspace/Production" noThrow />
+          <Redirect from="/Workspace/site.html" to="/Workspace/Site" noThrow />
           <Workspace path="Workspace" />
-          <Workspace path="Workspace/:tab" />
+          <Workspace path="Workspace/:categoryPage" />
+          <Workspace path="Workspace/:categoryPage/:subPage" />
           <Redirect from="/*" to="/LaunchPad/Workspace" noThrow />
           <Redirect from="/launchpad/*" to="/LaunchPad/Workspace" noThrow />
         </Router>
@@ -52,6 +57,7 @@ ReactDOM.render(
       <UnauthenticatedTemplate>
         <Router>
           <Workspace path="Workspace" />
+          <Workspace path="Workspace/:categoryPage" />
         </Router>
         <Router basepath="/LaunchPad">
           <Redirect from="/*" to="/LaunchPad/SignIn" noThrow />
