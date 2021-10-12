@@ -136,7 +136,7 @@ class LinkList(generics.ListCreateAPIView):
     queryset = Link.objects.all()
     serializer_class = LinkSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id','category','plant']
+    filter_fields = ['id','category','plant', 'tag']
     def get_serializer_class(self):
         if(self.request.GET.get('depth')):
             if (3>= int(self.request.GET.get('depth')) >= 0):

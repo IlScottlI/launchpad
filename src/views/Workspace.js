@@ -13,6 +13,19 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import CssBaseline from '@mui/material/CssBaseline';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
+
+
 export default function ButtonAppBar() {
     const [value, setValue] = React.useState(0);
 
@@ -50,12 +63,12 @@ export default function ButtonAppBar() {
                     <Link to="/Workspace/Production" style={{ paddingLeft: '.5rem', paddingRight: '.5rem', textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Production</Link>
                     <Link to="/Workspace/Site" style={{ paddingLeft: '.5rem', paddingRight: '.5rem', textDecoration: 'none', color: 'rgba(0,0,0,0.5)' }}>Site</Link>
                     <div>
-                        <span  style={{ paddingLeft: '.5rem', paddingRight: '.5rem', textDecoration: 'none', color: 'rgba(0,0,0,0.5)', cursor:'pointer' }}
+                        <span style={{ paddingLeft: '.5rem', paddingRight: '.5rem', textDecoration: 'none', color: 'rgba(0,0,0,0.5)', cursor: 'pointer' }}
                             onClick={handleClick}
                         >
                             Business Workspace
                         </span>
-                        <i style={{display:'inline-block',content:''}}></i>
+                        <i style={{ display: 'inline-block', content: '' }}></i>
                         <Menu
                             anchorEl={anchorEl}
                             open={open}
@@ -77,6 +90,18 @@ export default function ButtonAppBar() {
                 </Stack>
                 </Toolbar>
             </AppBar>
+            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+                <BottomNavigation
+                    showLabels
+                    value={value}
+                    onChange={(event, newValue) => {
+                        setValue(newValue);
+                    }}
+                >
+                    <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+                </BottomNavigation>
+            </Paper>
         </Box>
+
     );
 }
